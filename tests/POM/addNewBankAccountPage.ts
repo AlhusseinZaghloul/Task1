@@ -22,16 +22,10 @@ export class AddNewBankAccount{
         await this.page.goto(url)
 }
 
-    async enterBankName(bankName:string){
-        await  this.bankNameDDL.fill(bankName)
-    }
-    async enterBranchName(branchName:string){
-       await this.branchNameDDL.fill(branchName)
-    }
-    async enterBankAccountType(type:string){
+    async fillNewBankAccountdata(bankName:string,branchName:string,type:string,iban:string){
+        await this.bankNameDDL.fill(bankName)
+        await this.branchNameDDL.fill(branchName)
         await this.bankAccountTypeDDL.fill(type)
-    }
-    async enterIBAN(iban:string){
         await this.iBANfield.fill(iban)
     }
     async clickOnSave(){
