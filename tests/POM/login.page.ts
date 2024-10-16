@@ -12,7 +12,7 @@ export class LoginPage{
     constructor(page:Page){
         this.page = page
         this.userNameField = page.locator('#userName')
-        this.passwordField = page.locator('input[placeholder="Password"]')
+        this.passwordField = page.locator('#password')
         this.loginButton =   page.locator('button[type="submit"]');
         this.errorMessage=page.locator('.err')  
     }
