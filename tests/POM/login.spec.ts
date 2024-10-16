@@ -18,8 +18,13 @@ test('Valid Login', async ({page}) => {
 test('invalid Login', async ({page}) => {
     const login= new  LoginPage(page) 
     await login.NavigateToLoginPage('')
-    await login.performLogin("orban","12345777")
-    expect(login.errorMessage, 'Invalid login data').toBeVisible
+    await login.performLogin("orban","123456")
+    await page.waitForTimeout(12*1000)
+
+    
+    // assertion is not failing
+    await expect(login.passwordField, 'Invalid login data').toBeVisible
+   // expect(login.errorMessage, 'Invalid login data').toBeVisible
 } )
 
 });

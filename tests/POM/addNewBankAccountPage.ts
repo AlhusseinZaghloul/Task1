@@ -1,7 +1,6 @@
 import { Locator, Page } from "@playwright/test"
 
 export class AddNewBankAccount{
-    readonly url: string = "http://ahq-systest-01:8090/finance/cash-and-bank/setup/bank-accounts/new-bank-account"
     readonly page: Page
     readonly bankNameDDL:Locator
     readonly branchNameDDL:Locator
@@ -19,8 +18,8 @@ export class AddNewBankAccount{
         this.saveButton=page.locator('button.k-button.saveBtn')
 
     }
-    async navigateToAddNewBankAccountPage(){
-        await this.page.goto(this.url)
+    async navigateToAddNewBankAccountPage(url:string){
+        await this.page.goto(url)
 }
 
     async enterBankName(bankName:string){

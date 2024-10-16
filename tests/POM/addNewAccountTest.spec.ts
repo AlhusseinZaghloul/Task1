@@ -10,7 +10,7 @@ test.describe('Add new', () => {
         await login.performLogin("orban","123456")
         await expect(page).toHaveURL('/dashboard')
         const addNewAccount= new AddNewBankAccount(page)
-        await addNewAccount.navigateToAddNewBankAccountPage()
+        await addNewAccount.navigateToAddNewBankAccountPage("http://ahq-systest-01:8090/finance/cash-and-bank/setup/bank-accounts/new-bank-account")
         await addNewAccount.enterBankName('CIB')  
         await addNewAccount.enterBranchName("Smouha")
         await addNewAccount.enterBankAccountType("Current Account")
