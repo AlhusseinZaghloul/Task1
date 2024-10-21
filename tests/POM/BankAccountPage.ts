@@ -23,9 +23,12 @@ export class BankAccountPage{
         await this.page.keyboard.press('Enter');
     }
         async getBranchValue(branchName:string){
-        const bankValue = branchName;  // This can be a dynamic value
-        return await this.page.locator(`//td[@id="bankAccountsGrid_active_cell"]//span[contains(text(), "${bankValue}")]`).textContent()
+        return await this.page.locator(`(//span[@class='arName'][normalize-space()='${branchName}'])[1]`).textContent()
     } 
+    /* async getBranchValue(branchName: string) {
+        return await this.page.locator(`(//span[@class='arName'][normalize-space()='${branchName}'])[1]`).textContent();
+    }
+     */
     
     
 

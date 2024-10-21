@@ -10,17 +10,11 @@ test.describe('Grid Validation', () => {
        await login.performLogin("orban","123456")
        await expect(page).toHaveURL('/dashboard')
        const bankAccountPage= new BankAccountPage(page)
-       await bankAccountPage.navigateToBankAccountPage()
+       await bankAccountPage.navigateToBankAccountPage("http://ahq-systest-01:8090/finance/cash-and-bank/setup/bank-accounts")
        await bankAccountPage.nextButton.click()    
-       expect(bankAccountPage.nextButton, 'Page number 2 is displayed').toBeVisible
-     
-       
+       expect(bankAccountPage.nextButton, 'Page number 2 is displayed').toBeVisible 
     })
 
-   });
-
-   test.describe('Filter grid by branch', () => {
-  
       test('Branch Filter', async ({page}) => {
           const login= new  LoginPage(page) 
           await login.NavigateToLoginPage('')
@@ -29,11 +23,9 @@ test.describe('Grid Validation', () => {
           const bankAccountPage= new BankAccountPage(page)
           await bankAccountPage.navigateToBankAccountPage("http://ahq-systest-01:8090/finance/cash-and-bank/setup/bank-accounts")
           await bankAccountPage.filterByBranch("NBK")   
-        
-         //I have issue with here...
          const branchText = await bankAccountPage.getBranchValue('NBK')
-         expect(branchText).toBe('NBK')
-
+         expect(branchText?.trim()).toBe('NBK') 
+         
       }); 
    }); 
    
