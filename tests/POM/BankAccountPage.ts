@@ -2,7 +2,7 @@ import { Locator, Page } from "@playwright/test"
 
 
 export class BankAccountPage{
-    readonly url: string = "http://ahq-systest-01:8090/finance/cash-and-bank/setup/bank-accounts"
+    //readonly url: string
     readonly page: Page
     readonly nextButton: Locator
     //readonly pagenation2: Locator
@@ -15,8 +15,8 @@ export class BankAccountPage{
         this.branchField=page.locator('input[title="Branch"]')
     }
 
-    async navigateToBankAccountPage(){
-        await this.page.goto(this.url)
+    async navigateToBankAccountPage(url:string){
+        await this.page.goto(url)
     }
     async filterByBranch(branchName:string){
         await this.branchField.fill(branchName)

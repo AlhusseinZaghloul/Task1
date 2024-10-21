@@ -27,7 +27,7 @@ test.describe('Grid Validation', () => {
           await login.performLogin("orban","123456")
           await expect(page).toHaveURL('/dashboard')
           const bankAccountPage= new BankAccountPage(page)
-          await bankAccountPage.navigateToBankAccountPage()
+          await bankAccountPage.navigateToBankAccountPage("http://ahq-systest-01:8090/finance/cash-and-bank/setup/bank-accounts")
           await bankAccountPage.filterByBranch("NBK")   
         
          //I have issue with here...
