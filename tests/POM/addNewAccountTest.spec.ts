@@ -12,10 +12,12 @@ test.describe('Add new', () => {
         await expect(page).toHaveURL('/dashboard')
         const addNewAccount= new AddNewBankAccount(page)
         await addNewAccount.navigateToAddNewBankAccountPage("http://ahq-systest-01:8090/finance/cash-and-bank/setup/bank-accounts/new-bank-account")
-        await addNewAccount.fillNewBankAccountdata("CIB","Smouha","Current Account",randomIban)
+        await addNewAccount.fillNewBankAccountData("CIB","Smouha","Current Account",randomIban)
         await addNewAccount.clickOnSave()
-        await expect(page).toHaveURL('finance/cash-and-bank/setup/bank-accounts')
-
-    }); 
- }); 
+        await addNewAccount.searchForCreatedBankAccount(randomIban)
+        //await expect(page).toHaveURL('finance/cash-and-bank/setup/bank-accounts')
+        const actual = await addNewAccount.getActualIBAN(randomIban);
+        await expect(actual?.trim()).toBe(randomIban);
+        }); }
+); 
  

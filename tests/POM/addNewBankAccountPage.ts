@@ -7,6 +7,7 @@ export class AddNewBankAccount{
     readonly bankAccountTypeDDL:Locator
     readonly iBANfield: Locator
     readonly saveButton: Locator
+    readonly iBANSearchFrield:Locator
     
 
     constructor(page:Page){
@@ -16,13 +17,14 @@ export class AddNewBankAccount{
         this.bankAccountTypeDDL=page.locator('input[placeholder="Account Type"]')
         this.iBANfield=page.locator('input[placeholder="Bank Account Number / IBAN"]')
         this.saveButton=page.locator('button.k-button.saveBtn')
+        this.iBANSearchFrield=page.locator('input[title="Bank Account Number / IBAN"]')
 
     }
     async navigateToAddNewBankAccountPage(url:string){
         await this.page.goto(url)
 }
 
-    async fillNewBankAccountdata(bankName:string,branchName:string,type:string,iban:string){
+    async fillNewBankAccountData(bankName:string,branchName:string,type:string,iban:string){
         await this.bankNameDDL.fill(bankName)
         await this.branchNameDDL.fill(branchName)
         await this.bankAccountTypeDDL.fill(type)
@@ -30,6 +32,13 @@ export class AddNewBankAccount{
     }
     async clickOnSave(){
         await this.saveButton.click()
+    }
+    async searchForCreatedBankAccount(createdIBAN){
+        await this.iBANSearchFrield.fill(createdIBAN)
+        await this.page.keyboard.press('Enter')
+    }
+    async getActualIBAN(randomIban:string){
+        return await this.page.locator(`//span[normalize-space()="${randomIban}"]`).textContent()
     }
 
 }
