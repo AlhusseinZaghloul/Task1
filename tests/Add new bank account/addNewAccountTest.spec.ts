@@ -1,5 +1,5 @@
 import  {test, expect} from '@playwright/test' 
-import { LoginPage } from './login.page.ts' 
+import { LoginPage } from '../Login/login.page.ts' 
 import { AddNewBankAccount } from './addNewBankAccountPage.ts'
 import { faker } from '@faker-js/faker';
 
