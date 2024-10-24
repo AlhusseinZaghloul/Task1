@@ -25,11 +25,6 @@ export class BankAccountPage{
         async getBranchValue(branchName:string){
         return await this.page.locator(`(//span[@class='arName'][normalize-space()='${branchName}'])[1]`).textContent()
     } 
-    /* async getBranchValue(branchName: string) {
-        return await this.page.locator(`(//span[@class='arName'][normalize-space()='${branchName}'])[1]`).textContent();
-    }
-     */
-    
     
 
   
