@@ -12,14 +12,14 @@ test.describe('Grid Validation', () => {
   
    test('Pagination', async ({page}) => {
        const bankAccountPage= new BankAccountPage(page)
-       await bankAccountPage.navigateToBankAccountPage("http://backoffice-systemtest.andalusiagroup.net:8090/finance/cash-and-bank/setup/bank-accounts")
+       await bankAccountPage.navigateToBankAccountPage("/finance/cash-and-bank/setup/bank-accounts")
        await bankAccountPage.nextButton.click()    
        expect(bankAccountPage.nextButton, 'Page number 2 is displayed').toBeVisible 
     })
 
       test('Branch Filter', async ({page}) => {
           const bankAccountPage= new BankAccountPage(page)
-          await bankAccountPage.navigateToBankAccountPage("http://backoffice-systemtest.andalusiagroup.net:8090/finance/cash-and-bank/setup/bank-accounts")
+          await bankAccountPage.navigateToBankAccountPage("/finance/cash-and-bank/setup/bank-accounts")
           // const dynamicBranchName:string=bankAccountPage.getDynamicBranchValue()  
           await bankAccountPage.filterByBranch("NBK")   
           const branchText = await bankAccountPage.getBranchValue('NBK')

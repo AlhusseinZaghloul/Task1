@@ -14,7 +14,7 @@ test.describe('Add new', () => {
     const randomIban = faker.finance.iban();
     test('Add new Bank Account', async ({page}) => {
         const addNewAccount= new AddNewBankAccount(page)
-        await addNewAccount.navigateToAddNewBankAccountPage("http://backoffice-systemtest.andalusiagroup.net:8090/finance/cash-and-bank/setup/bank-accounts/new-bank-account")
+        await addNewAccount.navigateToAddNewBankAccountPage("/finance/cash-and-bank/setup/bank-accounts/new-bank-account")
         await addNewAccount.fillNewBankAccountData("CIB","Smouha","Current Account",randomIban)
         await addNewAccount.clickOnSave()
         await addNewAccount.searchForCreatedBankAccount(randomIban)
