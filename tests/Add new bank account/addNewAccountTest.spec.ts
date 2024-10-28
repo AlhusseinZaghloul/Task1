@@ -4,12 +4,15 @@ import { AddNewBankAccount } from './addNewBankAccountPage.ts'
 import { faker } from '@faker-js/faker';
 
 test.describe('Add new', () => {
-    const randomIban = faker.finance.iban();
-    test('Add new Bank Account', async ({page}) => {
+
+    test.beforeEach(async ({ page }) => {
         const login= new  LoginPage(page) 
         await login.NavigateToLoginPage('')
         await login.performLogin("orban","123456")
         await expect(page).toHaveURL('/dashboard')
+      });
+    const randomIban = faker.finance.iban();
+    test('Add new Bank Account', async ({page}) => {
         const addNewAccount= new AddNewBankAccount(page)
         await addNewAccount.navigateToAddNewBankAccountPage("http://backoffice-systemtest.andalusiagroup.net:8090/finance/cash-and-bank/setup/bank-accounts/new-bank-account")
         await addNewAccount.fillNewBankAccountData("CIB","Smouha","Current Account",randomIban)
