@@ -7,12 +7,14 @@ export class BankAccountPage{
     readonly nextButton: Locator
     //readonly pagenation2: Locator
     readonly branchField: Locator
+    readonly filterbranchLocator: Locator
 
     constructor(page:Page){
         this.page = page
         this.nextButton=page.locator('.k-i-arrow-60-right')
         //this.pagenation2=page.locator('text=2')
         this.branchField=page.locator('input[title="Branch"]')
+        this.filterbranchLocator=page.locator(`//span[@class='enName'][normalize-space()='NBE'])[1]`)
     }
 
     async navigateToBankAccountPage(url:string){
@@ -25,11 +27,9 @@ export class BankAccountPage{
         async getBranchValue(branchName:string){
         return await this.page.locator(`(//span[@class='arName'][normalize-space()='${branchName}'])[1]`).textContent()
     } 
-    /* async getBranchValue(branchName: string) {
-        return await this.page.locator(`(//span[@class='arName'][normalize-space()='${branchName}'])[1]`).textContent();
+    async getDynamicBranchValue(){
+        return await this.filterbranchLocator.textContent()
     }
-     */
-    
     
 
   
