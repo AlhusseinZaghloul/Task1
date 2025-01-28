@@ -7,7 +7,7 @@ test.describe('Login tests', () => {
 test('Valid Login', async ({page}) => {
     const login= new  LoginPage(page) 
     await login.NavigateToLoginPage('')
-    await login.performLogin("orban","123456")
+    await login.performLogin("alhussein","123456")
     await expect(page).toHaveURL('/dashboard')
 
     
@@ -17,7 +17,7 @@ test('Valid Login', async ({page}) => {
 test('invalid Login', async ({page}) => {
     const login= new  LoginPage(page) 
     await login.NavigateToLoginPage('')
-    await login.performLogin("orban","12347777")
+    await login.performLogin("alhussein","12347777")
     await page.waitForTimeout(18*1000)
 
     // Asssertion will fail if we used valid login data

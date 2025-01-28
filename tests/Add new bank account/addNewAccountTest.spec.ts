@@ -8,7 +8,7 @@ test.describe('Add new', () => {
     test.beforeEach(async ({ page }) => {
         const login= new  LoginPage(page) 
         await login.NavigateToLoginPage('')
-        await login.performLogin("orban","123456")
+        await login.performLogin("alhussein","123456")
         await expect(page).toHaveURL('/dashboard')
       });
     const randomIban = faker.finance.iban();
