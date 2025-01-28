@@ -8,7 +8,7 @@ test.describe('Login tests', () => {
 test('Valid Login', async ({page}) => {
     const login= new  LoginPage(page) 
     await login.NavigateToLoginPage('')
-    await login.performLogin("orban","123456")
+    await login.performLogin("alhussein","123456")
     await expect(page).toHaveURL('/dashboard')
 
     
@@ -18,10 +18,10 @@ test('Valid Login', async ({page}) => {
 test('invalid Login', async ({page}) => {
     const login= new  LoginPage(page) 
     await login.NavigateToLoginPage('')
-    await login.performLogin("orban","123456")
-    await page.waitForTimeout(12*1000)
 
-    
+    await login.performLogin("alhussein","12347777")
+    await page.waitForTimeout(18*1000)
+
     // assertion is not failing
     await expect(login.passwordField, 'Invalid login data').toBeVisible
    // expect(login.errorMessage, 'Invalid login data').toBeVisible
