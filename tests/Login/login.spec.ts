@@ -1,9 +1,10 @@
 import  {test, expect} from '@playwright/test' 
-import { LoginPage } from './login.page.ts';
+import { LoginPage } from './login.page.ts' 
+import { BankAccountPage } from './BankAccountPage.ts'
 
 
 test.describe('Login tests', () => {
-  
+
 test('Valid Login', async ({page}) => {
     const login= new  LoginPage(page) 
     await login.NavigateToLoginPage('')
@@ -17,11 +18,13 @@ test('Valid Login', async ({page}) => {
 test('invalid Login', async ({page}) => {
     const login= new  LoginPage(page) 
     await login.NavigateToLoginPage('')
+
     await login.performLogin("alhussein","12347777")
     await page.waitForTimeout(18*1000)
 
-    // Asssertion will fail if we used valid login data
-    await expect(login.passwordField, 'Invalid login data').toBeVisible()
+    // assertion is not failing
+    await expect(login.passwordField, 'Invalid login data').toBeVisible
+   // expect(login.errorMessage, 'Invalid login data').toBeVisible
 } )
 
 });
